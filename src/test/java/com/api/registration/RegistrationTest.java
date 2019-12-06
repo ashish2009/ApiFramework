@@ -19,6 +19,13 @@ public class RegistrationTest {
         System.out.println(response.asString());
     }
 
+    @Test
+    public void verifyCreateQuikrUserResp(){
+        ApiBase apiBase = new ApiBase("quikrRegistration.RegistrationConstant");
+        Response response =apiBase.getRequest().returnPostApiResp();
+        System.out.println(response.asString());
+    }
+
 
     @Test(dataProvider = "registrationEmail")
     public void verifyCreateUser(String email){

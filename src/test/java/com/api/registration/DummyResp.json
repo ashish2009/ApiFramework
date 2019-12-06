@@ -1,0 +1,14 @@
+{
+    "args": {
+        "test": "123"
+    },
+    "headers": {
+        "x-forwarded-proto": "https",
+        "host": "postman-echo.com",
+        "accept": "*/*",
+        "accept-encoding": "gzip,deflate",
+        "user-agent": "Apache-HttpClient/4.5.3 (Java/1.8.0_192)",
+        "x-forwarded-port": "443"
+    },
+    "url": "https://postman-echo.com/get?test=123"
+}

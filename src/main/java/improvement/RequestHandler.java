@@ -1,8 +1,8 @@
-package com.api;
+package improvement;
 
 import io.restassured.response.Response;
 
-public class RequestHandler extends ApiConfigSetup<RequestHandler>{
+public class RequestHandler extends ApiConfigSetup {
 
     private static Response response;
     private static Object parameter;
@@ -10,9 +10,6 @@ public class RequestHandler extends ApiConfigSetup<RequestHandler>{
 
 
 
-    public RequestHandler(){
-        super(RequestHandler.class);
-    }
     /*
      * This method will post request based on header,query and path params
      */
@@ -60,7 +57,7 @@ public class RequestHandler extends ApiConfigSetup<RequestHandler>{
     public Response returnPostApiResp() {
         System.out.println("Hitting api");
         try {
-            response = spec.relaxedHTTPSValidation().when()
+            response = spec.when()
                     .post()
                     .then()
                     .extract()

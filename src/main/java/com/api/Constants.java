@@ -16,6 +16,7 @@ public class Constants {
     public static final String acceptHeader="Accept:application/json";
     public static final String contentTypeHeader="Content-Type:application/json";
     public static final String authHeader="Authorization:Bearer 4L4tavtlVqUK5CU2XDhmsjOuJZHm7VKvkXy4";
+    public static final String quikrHeader = "X-Quikr-Client:desktopsite";
 
     public static String createBody(String file){
         FileReader reader = null;

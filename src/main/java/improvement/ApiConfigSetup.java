@@ -1,37 +1,29 @@
-package com.api;
+package improvement;
 
-import io.restassured.authentication.OAuthSignature;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiConfigSetup <T extends ApiConfigSetup<?>>{
+public class ApiConfigSetup{
 
     HashMap<String,String> header;
     HashMap<String,String> query;
     HashMap<String,String> param;
     RequestSpecification spec;
-    protected final T self;
 
-    protected ApiConfigSetup(final Class<T> selfClass){
-        this.self = selfClass.cast(this);
+    protected ApiConfigSetup(){
+
         spec = given();
     }
 
 
-    public ApiConfigSetup setAuth(String authId,String token){
+    public void setAuth(String authId, String token){
         spec = given().auth().basic(authId, token);
-        return self;
     }
 
-    public ApiConfigSetup setAuth(String token){
-        spec = given().auth().oauth2(token, OAuthSignature.QUERY_STRING);
-        return self;
-    }
-
-    public T setHeader(String s){
+    public void setHeader(String s){
         header = new HashMap<String, String>();
         String[] h = s.split(",");
         for(int i=0;i<h.length;i++){
@@ -42,10 +34,9 @@ public class ApiConfigSetup <T extends ApiConfigSetup<?>>{
             System.out.println(a+" "+header.get(a));
         }
         spec.headers(header);
-        return self;
     }
 
-    public T setQuery(String s){
+    public void setQuery(String s){
         query = new HashMap<String, String>();
         String[] q = s.split("&");
         for(int i=0;i<q.length;i++){
@@ -53,25 +44,21 @@ public class ApiConfigSetup <T extends ApiConfigSetup<?>>{
             query.put(ql[0], ql[1]);
         }
         spec.queryParams(query);
-        return self;
     }
 
-    public T setEndPoint(String uri){
+    public void setEndPoint(String uri){
         spec.baseUri(uri);
-        return self;
     }
 
-    public T setBasePath(String path){
+    public void setBasePath(String path){
         spec.basePath(path);
-        return self;
     }
 
-    public T setBody(String body){
+    public void setBody(String body){
         spec.body(body);
-        return self;
     }
 
-    public T setPathParam(String s){
+    public void setPathParam(String s){
         param = new HashMap<String, String>();
         String[] p = s.split(",");
         for(int i=0;i<p.length;i++){
@@ -82,7 +69,6 @@ public class ApiConfigSetup <T extends ApiConfigSetup<?>>{
             System.out.println(a+" "+param.get(a));
         }
         spec.pathParams(param);
-        return self;
     }
 
 
